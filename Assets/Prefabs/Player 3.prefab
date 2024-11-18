@@ -664,10 +664,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 3
-  moveSpeed: 10
+  moveSpeed: 5
   canDropBombs: 1
   canMove: 1
-  bombPrefab: {fileID: 0}
+  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!1 &178788
 GameObject:
   m_ObjectHideFlags: 0

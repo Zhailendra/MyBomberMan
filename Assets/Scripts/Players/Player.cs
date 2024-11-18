@@ -31,6 +31,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
     //Can the player move?
 
     private int bombs = 2;
+    private static HashSet<Vector3> placedBombs = new HashSet<Vector3>();
     //Amount of bombs the player has left to drop, gets decreased as the player
     //drops a bomb, increases as an owned bomb explodes
 
@@ -180,8 +182,8 @@ public class Player : MonoBehaviour
     private void DropBomb ()
     {
         if (bombPrefab)
-        { //Check if bomb prefab is assigned first
-
+        {
+            Instantiate (bombPrefab, new Vector3 (Mathf.RoundToInt (myTransform.position.x), bombPrefab.transform.position.y, Mathf.RoundToInt (myTransform.position.z)), bombPrefab.transform.rotation);
         }
     }
 
