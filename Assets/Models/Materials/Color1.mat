@@ -28,7 +28,9 @@ Material:
   - _EMISSION
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
+  - _OCCLUSIONMAP
   - _PARALLAXMAP
+  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -42,11 +44,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: cd2a5cd785d19d24db272f158ae575a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9877c861cb13d8146bec1b8fee1e09e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 1be546e13d1685e488d050744a2a3f39, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0f642a78615b04f47b9fda435709b4f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -66,19 +68,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cd2a5cd785d19d24db272f158ae575a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9877c861cb13d8146bec1b8fee1e09e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: dd61005ff82ff8e4db59c18dc5c342a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 29936b64540425347893cfedff6d02f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 52b19d9e2cee2ff4da55ce59ba3c348c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: bbbe54f80b62bdf4b83c42e7fea26d34, type: 3}
+        m_Texture: {fileID: 2800000, guid: a9e4dc5a8c9302444988957db6251018, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -122,8 +124,8 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.027
-    - _SmoothnessTextureChannel: 0
+    - _Smoothness: 0.411
+    - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
