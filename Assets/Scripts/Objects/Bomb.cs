@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public LayerMask wallMask;
+    private bool exploded = false;
 
     public GameObject explosionPrefab;
     
@@ -30,6 +31,7 @@ public class Bomb : MonoBehaviour
         StartCoroutine(CreateExplosions(Vector3.left));  
 
         GetComponent<MeshRenderer>().enabled = false;
+        exploded = true;
         transform.Find("Collider").gameObject.SetActive(false);
         Destroy(gameObject, .3f);
     }
@@ -55,7 +57,16 @@ public class Bomb : MonoBehaviour
             yield return new WaitForSeconds(.05f); 
         }
 
-    }  
+    }
+    
+    public void OnTriggerEnter(Collider other) 
+    {
+        if (!exploded && other.CompareTag("Explosion"))
+        { 
+            CancelInvoke("Explode");
+            Explode();
+        }  
+    }
 
     
 }
