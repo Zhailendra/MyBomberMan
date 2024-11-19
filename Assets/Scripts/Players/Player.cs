@@ -48,11 +48,10 @@ public class Player : MonoBehaviour
     //Can the player move?
     public bool isDead = false;
 
-    private int bombs = 2;
-    private static HashSet<Vector3> placedBombs = new HashSet<Vector3>();
+    private int nbBombs = 2;
     //Amount of bombs the player has left to drop, gets decreased as the player
     //drops a bomb, increases as an owned bomb explodes
-
+    
     //Prefabs
     public GameObject bombPrefab;
 
@@ -183,9 +182,10 @@ public class Player : MonoBehaviour
     /// </summary>
     private void DropBomb ()
     {
-        if (bombPrefab)
+        if (bombPrefab && nbBombs > 0)
         {
             Instantiate (bombPrefab, new Vector3 (Mathf.RoundToInt (myTransform.position.x), bombPrefab.transform.position.y, Mathf.RoundToInt (myTransform.position.z)), bombPrefab.transform.rotation);
+            nbBombs--;
         }
     }
 
@@ -199,4 +199,5 @@ public class Player : MonoBehaviour
             Debug.Log ("P" + playerNumber + " hit by explosion!");
         }
     }
+
 }

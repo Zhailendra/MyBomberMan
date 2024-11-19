@@ -17,12 +17,6 @@ public class Bomb : MonoBehaviour
     {
         Invoke("Explode", 3f);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     private void Explode()
     {
@@ -83,6 +77,5 @@ public class Bomb : MonoBehaviour
             Explode();
         }  
     }
-
     
 }

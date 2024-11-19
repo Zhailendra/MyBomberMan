@@ -609,7 +609,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174940}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 20
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -663,10 +663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d687084dafa81c42945384c9b3e65b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalManager: {fileID: 0}
   playerNumber: 3
   moveSpeed: 5
   canDropBombs: 1
   canMove: 1
+  isDead: 0
   bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!1 &178788
 GameObject:
