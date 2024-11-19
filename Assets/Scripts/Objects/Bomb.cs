@@ -5,9 +5,12 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public LayerMask wallMask;
+    public LayerMask breakableWallMask;
     private bool exploded = false;
+    public float propagationReduction = 0.5f; 
 
     public GameObject explosionPrefab;
+    public GameObject wallBreakParticlesPrefab;
     
     // Start is called before the first frame update
     void Start()
@@ -38,26 +41,39 @@ public class Bomb : MonoBehaviour
     
     private IEnumerator CreateExplosions(Vector3 direction) 
     {
-        for (int i = 1; i < 3; i++) 
+        float remainingRange = 3;
+
+        for (int i = 1; i <= remainingRange; i++) 
         { 
             RaycastHit hit; 
-            Physics.Raycast(transform.position + new Vector3(0,.5f,0), direction, out hit, 
-                i, wallMask);
 
-            if (!hit.collider) 
-            { 
-                Instantiate(explosionPrefab, transform.position + (i * direction),
-                    explosionPrefab.transform.rotation); 
-            } 
-            else 
+            if (Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out hit, i, wallMask)) 
             {
                 break; 
+            } 
+
+            if (Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out hit, i, breakableWallMask)) 
+            {
+                Instantiate(wallBreakParticlesPrefab, hit.collider.transform.position, Quaternion.identity);
+
+                Destroy(hit.collider.gameObject);
+
+                Instantiate(explosionPrefab, hit.collider.transform.position, explosionPrefab.transform.rotation);
+
+                remainingRange -= propagationReduction;
+
+                if (remainingRange <= 0)
+                    break;
+
+                continue;
             }
+
+            Instantiate(explosionPrefab, transform.position + (i * direction), explosionPrefab.transform.rotation);
 
             yield return new WaitForSeconds(.05f); 
         }
-
     }
+
     
     public void OnTriggerEnter(Collider other) 
     {
