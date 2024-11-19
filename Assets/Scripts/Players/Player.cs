@@ -35,6 +35,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+    public GlobalStateManager globalManager;
 
     //Player parameters
     [Range (1, 4)] //Enables a nifty slider in the editor
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     //Can the player drop bombs?
     public bool canMove = true;
     //Can the player move?
+    public bool isDead = false;
 
     private int bombs = 2;
     private static HashSet<Vector3> placedBombs = new HashSet<Vector3>();
@@ -191,6 +193,9 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag ("Explosion"))
         {
+            isDead = true;
+            globalManager.PlayerDied(playerNumber);
+            Destroy(gameObject);
             Debug.Log ("P" + playerNumber + " hit by explosion!");
         }
     }
