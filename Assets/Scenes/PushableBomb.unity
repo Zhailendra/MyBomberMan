@@ -4571,6 +4571,11 @@ PrefabInstance:
       propertyPath: bombPrefab
       value: 
       objectReference: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+    - target: {fileID: 5817665916782591434, guid: 6ab921f8d90e43e43a20029d71815f87,
+        type: 3}
+      propertyPath: powerUpPrefab
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21163,6 +21168,11 @@ PrefabInstance:
     - target: {fileID: 2240881192534159605, guid: 973e30aed52df874a8a9b583c4cf06d6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713893149531182108, guid: 973e30aed52df874a8a9b583c4cf06d6,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7628867827952849558, guid: 973e30aed52df874a8a9b583c4cf06d6,

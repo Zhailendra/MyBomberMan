@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4593160332070172903}
   - component: {fileID: 1052598617310108787}
   - component: {fileID: 5713893149531182108}
-  - component: {fileID: 1028958341309088203}
+  - component: {fileID: 7396328025165295181}
   m_Layer: 9
   m_Name: default
   m_TagString: BreakableWall
@@ -138,7 +138,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.915032, y: 2.261283, z: 2.0005488}
   m_Center: {x: 0.009146988, y: 1.1311765, z: -0.0002425313}
---- !u!114 &1028958341309088203
+--- !u!114 &7396328025165295181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7628867827952849558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9301328e97fa336459ba22999e74e151, type: 3}
+  m_Script: {fileID: 11500000, guid: 36084817809ba9847b2dbb1663004766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpPrefab: {fileID: 0}

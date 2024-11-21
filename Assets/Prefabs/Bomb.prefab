@@ -236,6 +236,8 @@ MonoBehaviour:
   explosionPrefab: {fileID: 177540, guid: 69dfce71c987ee94ebd40421847e3c8e, type: 3}
   wallBreakParticlesPrefab: {fileID: 8842938598211211801, guid: 839cd3940888c1e44953d2c7b0e067ba,
     type: 3}
+  powerUpPrefab: {fileID: 1984712038907732, guid: 35b2f0c23bc9d4842a262c0d98ef6155,
+    type: 3}
 --- !u!1 &127508
 GameObject:
   m_ObjectHideFlags: 0

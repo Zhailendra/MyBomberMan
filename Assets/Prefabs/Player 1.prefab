@@ -225,13 +225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d687084dafa81c42945384c9b3e65b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalManager: {fileID: 0}
   playerNumber: 1
-  moveSpeed: 5
-  canDropBombs: 1
-  canMove: 1
-  isDead: 0
-  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+  nbBombs: 2
+  explosionRange: 2
+  unlockedPushableBombs: 0
 --- !u!114 &5817665916782591434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +244,9 @@ MonoBehaviour:
   moveSpeed: 5
   canDropBombs: 1
   canMove: 1
-  bombPrefab: {fileID: 0}
+  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+  powerUpPrefab: {fileID: 1984712038907732, guid: 35b2f0c23bc9d4842a262c0d98ef6155,
+    type: 3}
 --- !u!1 &116766
 GameObject:
   m_ObjectHideFlags: 0

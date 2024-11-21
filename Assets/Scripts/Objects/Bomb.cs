@@ -36,7 +36,7 @@ public class Bomb : MonoBehaviour
         player.nbBombs++;
     }
     
-    private IEnumerator CreateExplosions(Vector3 direction) 
+    private IEnumerator CreateExplosions(Vector3 direction)
     {
         for (int i = 1; i <= explosionRange; i++) 
         { 
@@ -50,7 +50,13 @@ public class Bomb : MonoBehaviour
             if (Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out hit, i, breakableWallMask)) 
             {
                 Instantiate(wallBreakParticlesPrefab, hit.collider.transform.position, Quaternion.identity);
-
+                
+                PowerUpSpawner spawner = hit.collider.gameObject.GetComponent<PowerUpSpawner>();
+                if (spawner != null)
+                {
+                    spawner.SpawnPowerUpRandomly();
+                }
+                
                 Destroy(hit.collider.gameObject);
 
                 Instantiate(explosionPrefab, hit.collider.transform.position, explosionPrefab.transform.rotation);
