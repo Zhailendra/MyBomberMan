@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     
     public void SetGlobalStateManager(GlobalStateManager manager)
     {
-        Debug.Log ("P" + playerNumber + " got a GlobalStateManager!");
         globalManager = manager;
     }
     
