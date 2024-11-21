@@ -17,17 +17,17 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public bool remoteControl = false;
     
-    public void OnTriggerEnter (Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag ("Explosion"))
+        if (other.CompareTag("Explosion"))
         {
             lives--;
             Debug.Log ("P" + playerNumber + " hit by explosion!");
             if (lives <= 0)
             {
                 Debug.Log ("P" + playerNumber + " is dead!");
-                globalManager.PlayerDied(playerNumber);
                 Destroy (gameObject);
+                globalManager.PlayerDied(playerNumber);
             }
         }
     }
