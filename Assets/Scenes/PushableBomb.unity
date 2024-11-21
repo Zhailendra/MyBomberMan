@@ -4566,6 +4566,11 @@ PrefabInstance:
       propertyPath: globalManager
       value: 
       objectReference: {fileID: 528918064}
+    - target: {fileID: 5817665916782591434, guid: 6ab921f8d90e43e43a20029d71815f87,
+        type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 5481638}
   - component: {fileID: 13614668}
   - component: {fileID: 5759653692345197521}
+  - component: {fileID: 5817665916782591434}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -231,6 +232,22 @@ MonoBehaviour:
   canMove: 1
   isDead: 0
   bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+--- !u!114 &5817665916782591434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff29c2cfdae7784082f4a72ecb56be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  canDropBombs: 1
+  canMove: 1
+  bombPrefab: {fileID: 0}
 --- !u!1 &116766
 GameObject:
   m_ObjectHideFlags: 0
