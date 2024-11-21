@@ -208,15 +208,5 @@ public class PlayerMouvement : MonoBehaviour
 
         placedBombs.Clear();
     }
-
-    /*public void OnTriggerEnter (Collider other)
-    {
-        if (other.CompareTag ("Explosion"))
-        {
-            isDead = true;
-            globalManager.PlayerDied(player.playerNumber);
-            Destroy(gameObject);
-            Debug.Log ("P" + player.playerNumber + " hit by explosion!");
-        }
-    }*/
+    
 }
