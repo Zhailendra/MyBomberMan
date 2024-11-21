@@ -19,9 +19,17 @@ public class PowerUpSpawner : MonoBehaviour
 
     public void SpawnPowerUpRandomly()
     {
-        if(Random.Range(0.0f, 1.0f)> 0.7f) {
-            Debug.Log("SpawnPowerUp");
-            Instantiate(powerUpPrefab, transform.position, Quaternion.identity) ;
+        if (Random.Range(0.0f, 1.0f) > 0.7f)
+        {
+            if (!Physics.CheckSphere(transform.position, 0.5f, LayerMask.GetMask("PowerUp")))
+            {
+                Debug.Log("SpawnPowerUp");
+                Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("Power-up already exists at this location.");
+            }
         }
     }
     

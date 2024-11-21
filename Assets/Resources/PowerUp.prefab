@@ -123,3 +123,5 @@ MonoBehaviour:
   life: {fileID: 100008, guid: 096e667c5e4028f4a81bf8379621f90c, type: 3}
   power: {fileID: 100004, guid: 64ed97bde26c2794c80a787433398597, type: 3}
   speed: {fileID: 100006, guid: 345ebd64c885ec44ab3468dfe9b4a5bc, type: 3}
+  satellite: {fileID: 100006, guid: 8f2875655f485be4d8438962a9d306bc, type: 3}
+  powerUp: 0

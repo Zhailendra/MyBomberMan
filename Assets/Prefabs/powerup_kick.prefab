@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9500000}
   - component: {fileID: 11400000}
   m_Layer: 0
-  m_Name: euro
+  m_Name: object
   m_TagString: powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f604b43e09a6b14449810bfb51736fef, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0

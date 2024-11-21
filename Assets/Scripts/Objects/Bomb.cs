@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
         Invoke("Explode", 3f);
     }
     
-    private void Explode()
+    public void Explode()
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         

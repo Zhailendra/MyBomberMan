@@ -11,4 +11,7 @@ public class Player : MonoBehaviour
     public int nbBombs = 2;
     public int explosionRange = 2;
     public bool unlockedPushableBombs = false;
+    public int lives = 1;
+    public float moveSpeed = 5f;
+    public bool remoteControl = false;
 }

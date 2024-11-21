@@ -34,7 +34,6 @@ using UnityEngine;
 
 public class PlayerMouvement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
     public bool canDropBombs = true;
     //Can the player drop bombs?
     public bool canMove = true;
@@ -42,6 +41,7 @@ public class PlayerMouvement : MonoBehaviour
 
     //Prefabs
     public GameObject bombPrefab;
+    public List<Bomb> placedBombs = new List<Bomb>();
 
     //Cached components
     private Player player;
@@ -95,28 +95,28 @@ public class PlayerMouvement : MonoBehaviour
     {
         if (Input.GetKey (KeyCode.UpArrow))
         { //Up movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, player.moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 0, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.LeftArrow))
         { //Left movement
-            rigidBody.velocity = new Vector3 (-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.velocity = new Vector3 (-player.moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler (0, 270, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.DownArrow))
         { //Down movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -player.moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 180, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.RightArrow))
         { //Right movement
-            rigidBody.velocity = new Vector3 (moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.velocity = new Vector3 (player.moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler (0, 90, 0);
             animator.SetBool ("Walking", true);
         }
@@ -125,6 +125,11 @@ public class PlayerMouvement : MonoBehaviour
         { //Drop Bomb. For Player 2's bombs, allow both the numeric enter as the return key or players 
             //without a numpad will be unable to drop bombs
             DropBomb ();
+        }
+        
+        if (player.remoteControl && Input.GetKeyDown(KeyCode.R))
+        {
+            ForceExplodeAllBombs();
         }
     }
 
@@ -135,28 +140,28 @@ public class PlayerMouvement : MonoBehaviour
     {
         if (Input.GetKey (KeyCode.W))
         { //Up movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, player.moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 0, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.A))
         { //Left movement
-            rigidBody.velocity = new Vector3 (-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.velocity = new Vector3 (-player.moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler (0, 270, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.S))
         { //Down movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -player.moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 180, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.D))
         { //Right movement
-            rigidBody.velocity = new Vector3 (moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.velocity = new Vector3 (player.moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler (0, 90, 0);
             animator.SetBool ("Walking", true);
         }
@@ -164,6 +169,11 @@ public class PlayerMouvement : MonoBehaviour
         if (canDropBombs && Input.GetKeyDown (KeyCode.Space))
         { //Drop bomb
             DropBomb ();
+        }
+        
+        if (player.remoteControl && Input.GetKeyDown(KeyCode.E))
+        {
+            ForceExplodeAllBombs();
         }
     }
 
@@ -177,12 +187,26 @@ public class PlayerMouvement : MonoBehaviour
             GameObject bombDropped = Instantiate (bombPrefab, new Vector3 (Mathf.RoundToInt (myTransform.position.x), bombPrefab.transform.position.y, Mathf.RoundToInt (myTransform.position.z)), bombPrefab.transform.rotation);
             bombDropped.GetComponent<Bomb>().explosionRange = player.explosionRange;
             bombDropped.GetComponent<Bomb>().player = player;
+            placedBombs.Add(bombDropped.GetComponent<Bomb>());
             player.nbBombs--;
             if (player.unlockedPushableBombs)
             {
                 bombDropped.GetComponent<Rigidbody>().isKinematic = false;
             }
         }
+    }
+    
+    private void ForceExplodeAllBombs()
+    {
+        foreach (Bomb bomb in placedBombs)
+        {
+            if (bomb != null)
+            {
+                bomb.Explode();
+            }
+        }
+
+        placedBombs.Clear();
     }
 
     /*public void OnTriggerEnter (Collider other)

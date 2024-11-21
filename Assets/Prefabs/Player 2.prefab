@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 5418200}
   - component: {fileID: 13644608}
   - component: {fileID: 1386327252411198114}
+  - component: {fileID: -7157104917594312663}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -663,13 +664,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d687084dafa81c42945384c9b3e65b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalManager: {fileID: 0}
   playerNumber: 2
+  nbBombs: 2
+  explosionRange: 2
+  unlockedPushableBombs: 0
+  lives: 1
   moveSpeed: 5
+  remoteControl: 0
+--- !u!114 &-7157104917594312663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff29c2cfdae7784082f4a72ecb56be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   canDropBombs: 1
   canMove: 1
-  isDead: 0
   bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+  placedBombs: []
 --- !u!1 &178788
 GameObject:
   m_ObjectHideFlags: 0
