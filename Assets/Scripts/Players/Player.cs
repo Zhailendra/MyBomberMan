@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public bool remoteControl = false;
     
+    public void SetGlobalStateManager(GlobalStateManager manager)
+    {
+        Debug.Log ("P" + playerNumber + " got a GlobalStateManager!");
+        globalManager = manager;
+    }
+    
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Explosion"))
@@ -26,8 +32,8 @@ public class Player : MonoBehaviour
             if (lives <= 0)
             {
                 Debug.Log ("P" + playerNumber + " is dead!");
-                Destroy (gameObject);
                 globalManager.PlayerDied(playerNumber);
+                Destroy (gameObject);
             }
         }
     }
