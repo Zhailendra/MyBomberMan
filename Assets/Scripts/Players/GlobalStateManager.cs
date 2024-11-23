@@ -1,41 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GlobalStateManager : MonoBehaviour
 {
-    public int playerNumber;
-    public SpawnManager spawnManager;
+    private SpawnManager spawnManager;
+    public WinLoseMenu winLoseMenu;
+    public int OriginPlayerNumber = 0;
 
-    private int deadPlayers = 0;
-    private int deadPlayerNumber = -1;
-    private int[] totalPlayers;
+    public int deadPlayers = 0;
+    public List<int> alivePlayers = new List<int>();
 
     void Start()
     {
-        playerNumber = PlayerPrefs.GetInt("PlayerNumber", 0);
+        OriginPlayerNumber = PlayerPrefs.GetInt("PlayerNumber");
+        SetAlivePlayers();
         spawnManager = GetComponent<SpawnManager>();
-
-        if (playerNumber == 0)
+        if (spawnManager == null)
         {
-            Debug.LogError("Player number is not set in PlayerPrefs! Make sure to set it in the main menu.");
+            Debug.LogError("SpawnManager n'est pas assigné !");
         }
         else
         {
-            spawnManager.SetPlayerNumber(playerNumber);
-            totalPlayers = new int[playerNumber];
+            spawnManager.SetPlayerNumber(OriginPlayerNumber);
         }
     }
     
-    private void DestroyExistingPlayers()
+    void Update()
     {
-        Player[] existingPlayers = FindObjectsOfType<Player>();
-
-        foreach (Player player in existingPlayers)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (player != null && player.gameObject != null)
+            if (Time.timeScale == 0f)
             {
-                Destroy(player.gameObject);
-                Debug.Log("Ancien joueur détruit.");
+                winLoseMenu.Resume();
+            }
+            else
+            {
+                winLoseMenu.ShowMenu("SimpleMenu");
             }
         }
     }
@@ -43,41 +45,35 @@ public class GlobalStateManager : MonoBehaviour
     public void PlayerDied(int playerNumber)
     {
         deadPlayers++;
+        
+        alivePlayers.Remove(playerNumber);
 
-        deadPlayerNumber = playerNumber;
-
-        FindDeadPlayerInList();
-
-        if (deadPlayers == this.playerNumber)
+        if (alivePlayers.Count <= 1)
         {
             Invoke("CheckWinner", 0.3f);
         }
     }
     
-    private void FindDeadPlayerInList()
+    private void SetAlivePlayers()
     {
-        for (int i = 0; i < totalPlayers.Length; i++)
+        for (int i = 1; i <= OriginPlayerNumber; i++)
         {
-            if (totalPlayers[i] == deadPlayerNumber)
-            {
-                Debug.Log("Le joueur " + totalPlayers[i] + " est mort.");
-                totalPlayers[i] = -1;
-            }
+            alivePlayers.Add(i);
         }
     }
 
     private void CheckWinner()
     {
-        for (int i = 0; i < totalPlayers.Length; i++)
+        if (alivePlayers.Count == 0)
         {
-            if (totalPlayers[i] != -1)
-            {
-                Debug.Log("Le joueur " + totalPlayers[i] + " a gagné !");
-                return;
-            }
+            Debug.Log("Tous les joueurs sont morts !");
+            winLoseMenu.ShowMenu("Tous les joueurs sont morts !");
         }
-        
-        Debug.Log("Tout le monde est mort !, Egalité !");
-        
+        else
+        {
+            Debug.Log("Le joueur " + alivePlayers[0] + " a gagné !");
+            winLoseMenu.ShowMenu("Le joueur " + alivePlayers[0] + " a gagné !");
+        }
     }
+    
 }

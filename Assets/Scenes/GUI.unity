@@ -647,8 +647,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ad21d92cc4ec042b9df715635784a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
-  spawnManager: {fileID: 0}
+  winLoseMenu: {fileID: 0}
+  OriginPlayerNumber: 0
+  deadPlayers: 0
+  alivePlayers: 
 --- !u!4 &268797643
 Transform:
   m_ObjectHideFlags: 0

@@ -249,6 +249,8 @@ MonoBehaviour:
   canMove: 1
   bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
   placedBombs: []
+  winLoseMenu: {fileID: 979455554386875992, guid: b6ebd651b95dd2743b1e378ef67e0f1b,
+    type: 3}
 --- !u!1 &116766
 GameObject:
   m_ObjectHideFlags: 0
