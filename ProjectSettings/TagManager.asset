@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - BreakableWall
   - Bomb
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

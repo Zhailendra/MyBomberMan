@@ -17,9 +17,14 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public bool remoteControl = false;
     
-    public void OnTriggerEnter (Collider other)
+    public void SetGlobalStateManager(GlobalStateManager manager)
     {
-        if (other.CompareTag ("Explosion"))
+        globalManager = manager;
+    }
+    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Explosion"))
         {
             lives--;
             Debug.Log ("P" + playerNumber + " hit by explosion!");
