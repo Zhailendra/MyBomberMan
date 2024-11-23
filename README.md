@@ -1,4 +1,4 @@
-# Local Multiplayer Bomberman Game
+# Bomberman Game - Unity
 
 A fun, fast-paced, local multiplayer *Bomberman*-style game where you can play with up to 4 players on the same device! Place bombs, destroy destructible walls to collect power-ups, and outsmart your friends in explosive, strategic battles.
 
