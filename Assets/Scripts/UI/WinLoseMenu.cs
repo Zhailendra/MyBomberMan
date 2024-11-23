@@ -43,7 +43,6 @@ public class WinLoseMenu : MonoBehaviour
         Debug.Log("ShowMenu");
         Time.timeScale = 0f;
         GameObject resumeButton = transform.Find("Resume Button").gameObject;
-        GameObject restartButton = transform.Find("Restart Button").gameObject;
 
         TextMeshProUGUI textComponent = transform.Find("Text").GetComponent<TextMeshProUGUI>();
 
@@ -56,7 +55,6 @@ public class WinLoseMenu : MonoBehaviour
             }
 
             resumeButton.SetActive(true);
-            restartButton.SetActive(false);
         }
         else
         {
@@ -68,7 +66,6 @@ public class WinLoseMenu : MonoBehaviour
             }
 
             resumeButton.SetActive(false);
-            restartButton.SetActive(true);
         }
     }
 
